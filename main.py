@@ -62,14 +62,18 @@ def cadastrarMedicamento():
   register_medicine(conn, nome, quantidade, preco)
   
 def listarMedicamento():
-  produto = list_medicine
+  produto = list_medicine(conn)
   print(produto)
   
 def atualizarMedicamento():
+  produto_id = input('Informe o código do medicamento que deseja atualizar: ')
   quantidade = input('\nInforme o valor atualizado do estoque: ')
   preco = input('\nInforme o preço atualizado do medicamento: ')
-  update_medicine(conn, quantidade, preco)
+  update_medicine(conn, produto_id, quantidade, preco)
 
+def excluirMedicamento():
+   produto_id = input('Informe o código do medicamento que deseja excluir: ')
+   delete_medicine(conn, produto_id)
 
 print("\n=============================================\n")
 print("==== BEM-VINDO(A) AO SISTEMA DA FARMÁCIA ====")
@@ -85,7 +89,7 @@ while True:
     elif opcaoUser == 2:
         print(list_user(conn))
     elif opcaoUser == 3:
-        if login_user(conn):
+        if fazerLogin():
             break
     elif opcaoUser == 4:
         break
@@ -98,13 +102,13 @@ while opcaoMenu != 5:
     opcaoMenu = menuPrincipal()
 
     if opcaoMenu == 1:
-        register_medicine()
+        cadastrarMedicamento()
     elif opcaoMenu == 2:
-        list_medicine()
+        listarMedicamento()
     elif opcaoMenu == 3:
-        update_medicine()
+        atualizarMedicamento()
     elif opcaoMenu == 4:
-        delete_medicine()
+        excluirMedicamento()
     elif opcaoMenu == 5:
         break
     else:

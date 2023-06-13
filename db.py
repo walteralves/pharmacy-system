@@ -8,7 +8,7 @@ c.execute('''
     CREATE TABLE IF NOT EXISTS usuario (
       user_id INTEGER PRIMARY KEY AUTOINCREMENT,
       user VARCHAR(25),
-      password INTERGER
+      password INTEGER
     )
 ''')
 
@@ -17,8 +17,8 @@ c.execute('''
     CREATE TABLE IF NOT EXISTS produto (
       produto_id INTEGER PRIMARY KEY AUTOINCREMENT,
       nome VARCHAR(25),
-      quantidade INTERGER,
-      preco FLOAT
+      quantidade INTEGER,
+      preco REAL
     )
 ''')
 
