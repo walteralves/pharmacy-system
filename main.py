@@ -80,7 +80,6 @@ opcaoUser = 0
 
 while True:
     opcaoUser = menuLogin()
-
     if opcaoUser == 1:
         cadastrarUsuario()
     elif opcaoUser == 2:
