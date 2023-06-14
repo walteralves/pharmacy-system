@@ -13,15 +13,16 @@ def list_medicine(conexao):
   cursor.execute(sql)
   return cursor.fetchall()
 
-def update_medicine(conexao, produto_id, quantidade, preco):
+def validate(conexao, produto_id):
   cursor = conexao.cursor()
   sql = 'SELECT * FROM produto WHERE produto_id = ?'
   cursor.execute(sql, [produto_id])
   
-  if cursor.fetchall() == []:
-    return print('\nEste produto não está cadastrado no sistema!')
-  
-  sql = 'UPDATE produto SET quantidade = ? and preco = ? WHERE produto_id = ?'
+  return cursor.fetchall() == []
+
+def update_medicine(conexao, produto_id, quantidade, preco):
+  cursor = conexao.cursor()
+  sql = 'UPDATE produto SET quantidade=? AND preco=? WHERE produto_id=?'
   cursor = conexao.cursor()
   cursor.execute(sql, [quantidade, preco, produto_id])
   conexao.commit()

@@ -1,6 +1,6 @@
 import sqlite3
 from functions.usuario_db import create_user, list_user, login_user
-from functions.medicacao_db import register_medicine, list_medicine, update_medicine, delete_medicine
+from functions.medicacao_db import register_medicine, list_medicine, update_medicine, delete_medicine, validate
 
 conn = sqlite3.connect('farmacia.db')
 c = conn.cursor()
@@ -55,6 +55,8 @@ def listarMedicamento():
   
 def atualizarMedicamento():
   produto_id = int(input('Informe o código do medicamento que deseja atualizar: '))
+  if validate(conn, produto_id):
+    return print('\nEste produto não está cadastrado no sistema!')
   quantidade = int(input('\nInforme o valor atualizado do estoque: '))
   preco = float(input('\nInforme o preço atualizado do medicamento: '))
   update_medicine(conn, produto_id, quantidade, preco)
