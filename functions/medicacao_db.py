@@ -21,12 +21,11 @@ def update_medicine(conexao, produto_id, quantidade, preco):
   if cursor.fetchall() == []:
     return print('\nEste produto não está cadastrado no sistema!')
   
-  else:
-    sql = 'UPDATE produto SET quantidade = ? and preco = ?'
-    cursor = conexao.cursor()
-    cursor.execute(sql, [produto_id, quantidade, preco])
-    conexao.commit()
-    print('\nProduto atualizado com sucesso!')
+  sql = "UPDATE produto SET quantidade = ? and preco = ?"
+  cursor = conexao.cursor()
+  cursor.execute(sql, [quantidade, preco])
+  conexao.commit()
+  print('\nProduto atualizado com sucesso!')
   
 def delete_medicine(conexao, produto_id):
   cursor = conexao.cursor()
@@ -38,5 +37,5 @@ def delete_medicine(conexao, produto_id):
   
   sql = 'DELETE FROM produto WHERE produto_id = ?'
   cursor.execute(sql, [produto_id])
-  conexao.commit
-  print('\nProduto detelato!')
+  conexao.commit()
+  print('\nProduto excluído!')

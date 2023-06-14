@@ -1,4 +1,5 @@
 import sqlite3
+from getpass import getpass
 from functions.usuario_db import create_user, list_user, login_user
 from functions.medicacao_db import register_medicine, list_medicine, update_medicine, delete_medicine
 
@@ -33,7 +34,7 @@ def fazerLogin():
   else:
     print('\n Usuário e/ou senha inválido!')
     return False
-
+  
 def menuPrincipal():
   print('\n1 - Cadastrar novo medicamento: ')
   print('2 - Listar medicamentos: ')
@@ -57,7 +58,7 @@ def listarMedicamento():
 def atualizarMedicamento():
   produto_id = input('Informe o código do medicamento que deseja atualizar: ')
   quantidade = input('\nInforme o valor atualizado do estoque: ')
-  preco = input('\nInforme o preço atualizado do medicamento: ')
+  preco = float(input('\nInforme o preço atualizado do medicamento: '))
   update_medicine(conn, produto_id, quantidade, preco)
 
 def excluirMedicamento():
