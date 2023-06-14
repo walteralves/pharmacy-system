@@ -69,7 +69,7 @@ def atualizarMedicamento():
   produto_id = input('Informe o código do medicamento que deseja atualizar: ')
   quantidade = input('\nInforme o valor atualizado do estoque: ')
   preco = input('\nInforme o preço atualizado do medicamento: ')
-  update_medicine(conn, produto_id, quantidade, preco)
+  update_medicine(conn, quantidade, preco)
 
 def excluirMedicamento():
    produto_id = input('Informe o código do medicamento que deseja excluir: ')
