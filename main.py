@@ -1,5 +1,4 @@
 import sqlite3
-from getpass import getpass
 from functions.usuario_db import create_user, list_user, login_user
 from functions.medicacao_db import register_medicine, list_medicine, update_medicine, delete_medicine
 
@@ -8,9 +7,8 @@ c = conn.cursor()
 
 def menuLogin():
   print('\n1 - Cadastrar Usuário')
-  print('2 - Listar Usuários')
-  print('3 - Fazer Login')
-  print('4 - Sair')
+  print('2 - Fazer Login')
+  print('3 - Sair')
   opcaoUser = input('\nDigite uma opção para prosseguir: ')
   
   return int(opcaoUser)
@@ -48,7 +46,7 @@ def menuPrincipal():
 def cadastrarMedicamento():
   nome = input('\nInforme o nome do medicamento: ')
   quantidade = input('\nInforme a quantidade em estoque: ')
-  preco = input('\nInforme o preço do medicamento: ')
+  preco = float(input('\nInforme o preço do medicamento: '))
   register_medicine(conn, nome, quantidade, preco)
   
 def listarMedicamento():
@@ -56,8 +54,8 @@ def listarMedicamento():
   print(produto)
   
 def atualizarMedicamento():
-  produto_id = input('Informe o código do medicamento que deseja atualizar: ')
-  quantidade = input('\nInforme o valor atualizado do estoque: ')
+  produto_id = int(input('Informe o código do medicamento que deseja atualizar: '))
+  quantidade = int(input('\nInforme o valor atualizado do estoque: '))
   preco = float(input('\nInforme o preço atualizado do medicamento: '))
   update_medicine(conn, produto_id, quantidade, preco)
 
@@ -77,14 +75,12 @@ while True:
     if opcaoUser == 1:
         cadastrarUsuario()
     elif opcaoUser == 2:
-        print(list_user(conn))
-    elif opcaoUser == 3:
         if fazerLogin():
             break
-    elif opcaoUser == 4:
-        break
+    elif opcaoUser == 3:
+        exit()
     else: 
-        print("\nOpção inválida. Digite uma opção de 1 a 4.")
+        print("\nOpção inválida. Digite uma opção de 1 a 3.")
 
 opcaoMenu = 0 
 

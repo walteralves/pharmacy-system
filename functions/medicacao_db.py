@@ -1,7 +1,7 @@
 def register_medicine(conexao, nome, quantidade, preco):
   cursor = conexao.cursor()
   
-  sql = 'INSERT INTO produto(nome, quantidade, preco) VALUES (?, ?, ?)'
+  sql = f'INSERT INTO produto(nome, quantidade, preco) VALUES (?, ?, ?)'
   cursor.execute(sql, [nome, quantidade, preco])
   conexao.commit()
   
@@ -21,9 +21,9 @@ def update_medicine(conexao, produto_id, quantidade, preco):
   if cursor.fetchall() == []:
     return print('\nEste produto não está cadastrado no sistema!')
   
-  sql = "UPDATE produto SET quantidade = ? and preco = ?"
+  sql = 'UPDATE produto SET quantidade = ? and preco = ? WHERE produto_id = ?'
   cursor = conexao.cursor()
-  cursor.execute(sql, [quantidade, preco])
+  cursor.execute(sql, [quantidade, preco, produto_id])
   conexao.commit()
   print('\nProduto atualizado com sucesso!')
   
