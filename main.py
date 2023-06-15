@@ -1,4 +1,5 @@
 import sqlite3
+import getpass
 from functions.usuario_db import create_user, list_user, login_user
 from functions.medicacao_db import register_medicine, list_medicine, update_medicine, delete_medicine, validate
 
@@ -15,7 +16,7 @@ def menuLogin():
 
 def cadastrarUsuario():
   user = input('Informe seu novo usuário: ')
-  password = input('Informe sua nova senha: ')
+  password = getpass.getpass('Informe sua nova senha: ')
   create_user(conn, user, password)
   
 def listarUsuario():
@@ -24,7 +25,7 @@ def listarUsuario():
   
 def fazerLogin():
   user = input('Digite seu usuário: ')
-  password = input('Digite sua senha: ')
+  password = getpass.getpass('Digite sua senha: ')
   cursor = login_user(conn, user, password)
   if cursor: 
     print('\nLogin realizado com sucesso!')

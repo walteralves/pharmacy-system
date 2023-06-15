@@ -1,8 +1,7 @@
-def create_user(conexao, user, passowrd):
+def create_user(conexao, user, password):
   cursor = conexao.cursor()
-  
   sql = f'INSERT INTO usuario(user, password) VALUES (?, ?)'
-  cursor.execute(sql, [user, passowrd])
+  cursor.execute(sql, [user, password])
   conexao.commit()
   
   return True
